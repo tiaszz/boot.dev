@@ -1,9 +1,10 @@
 class Siege:
     def __init__(self, max_speed, efficiency):
-        pass
+        self.max_speed = max_speed
+        self.efficiency = efficiency
 
     def get_trip_cost(self, distance, food_price):
-        pass
+        return (distance / self.efficiency) * food_price
 
     def get_cargo_volume(self):
         pass
@@ -17,19 +18,22 @@ class BatteringRam(Siege):
         load_weight,
         bed_area,
     ):
-        pass
+        super().__init__(max_speed, efficiency)
+        self.load_weight = load_weight
+        self.bed_area = bed_area
 
     def get_trip_cost(self, distance, food_price):
-        pass
+        return super().get_trip_cost(distance, food_price) + (self.load_weight * 0.01)
 
     def get_cargo_volume(self):
-        pass
+        return self.bed_area * 2
 
 
 class Catapult(Siege):
     def __init__(self, max_speed, efficiency, cargo_volume):
-        pass
+        super().__init__(max_speed, efficiency)
+        self.cargo_volume = cargo_volume
 
     def get_cargo_volume(self):
-        pass
+        return self.cargo_volume
 
