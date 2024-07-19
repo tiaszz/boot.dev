@@ -17,13 +17,15 @@ class War(CardGame):
         self.player2_hand = []
 
     def play(self):
+        self.deck.shuffle_deck()
         self.player1_hand = self.__deal_hand()
         self.player2_hand = self.__deal_hand()
+
         self.__battle()
 
     def __deal_hand(self):
         hand = []
-        for i in range(5):
+        for _ in range(5):
             hand.append(self.deck.deal_card())
         return hand
 
