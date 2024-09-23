@@ -1,5 +1,16 @@
 def get_filter_cmd(filters):
-    pass
+    def filter_cmd(content, options, word_pairs):
+        if not options:
+            raise Exception("missing options")
+            return
+        for option in options:
+            if option not in filters:
+                raise Exception("invalid option")
+
+            content = filters[option](content, word_pairs)
+        return content
+
+    return filter_cmd
 
 
 # don't touch below this line
@@ -33,4 +44,3 @@ filters = {
     "--capitalize": capitalize_sentences,
     "--uppercase": uppercase_words,
 }
-
