@@ -2,7 +2,6 @@ def get_filter_cmd(filters):
     def filter_cmd(content, options, word_pairs):
         if not options:
             raise Exception("missing options")
-            return
         for option in options:
             if option not in filters:
                 raise Exception("invalid option")
