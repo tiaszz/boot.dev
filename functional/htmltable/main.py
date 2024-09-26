@@ -29,11 +29,21 @@ accumulate_headers = create_accumulator(tag_header)
 
 
 def create_html_table(data_rows):
-    mapped_data_rows = map()
-    # ?
+    rows = ""
 
     def create_table_headers(headers):
-        # ?
+        nonlocal rows
+
+        header_cells = map(lambda header: f"<th>{header}</th>", headers)
+        header_row = "".join(header_cells)
+        rows = f"<tr>{header_row}</tr>" + rows
+
+        html_rows = "".join(
+            map(lambda row: f"<tr>{''.join(map(lambda cell: f'<td>{cell}</td>', row))}</tr>", data_rows)
+        )
+        rows += html_rows
+
+        return f"<table>{rows}</table>"
 
     return create_table_headers
 
