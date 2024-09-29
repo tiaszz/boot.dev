@@ -16,5 +16,9 @@ def convert_format(content, from_format, to_format):
         case (DocFormat.MD, DocFormat.HTML):
             return content.replace("# ", "<h1>") + "</h1>"
         case (DocFormat.TXT, DocFormat.PDF):
-            return
+            return "[PDF] " + content + " [PDF]"
+        case (DocFormat.HTML, DocFormat.MD):
+            return content.replace("<h1>", "# ").replace("</h1>", "")
+        case _:
+            raise Exception("Invalid type")
 
